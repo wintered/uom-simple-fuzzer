@@ -64,12 +64,12 @@ def run(cmd, capture=False):
 # Fuzzing loop
 for _ in range(n_iterations):
     # 1. Determine input size at random
-    low = 1      
-    high = 100      # HINT def5 (C1)
+    low = 1
+    high = 5    # HINT1
     inputsize = random.randint(low, high)
 
     # 2. Create input at random
-    alphabet = ["a", "b", "z", "0", "1", " "] # HINT (C2)
+    alphabet = ["a", "b", "z", "0", "1"]# HINT2 + HINT3
     fuzz_input = ''.join(
         random.choice(alphabet)
         for _ in range(inputsize)

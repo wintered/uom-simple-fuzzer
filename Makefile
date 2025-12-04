@@ -9,4 +9,7 @@ clean:
 	rm -rf ec-wc10.zip
 
 package: all
-	zip ec-wc10.zip README $(CBINS) fuzzer.py
+	rm -rf ec-wc10
+	mkdir ec-wc10
+	cp $(CBINS) fuzzer.py ec-wc10/
+	zip -r ec-wc10.zip ec-wc10
