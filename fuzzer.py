@@ -55,9 +55,13 @@ def run(cmd, capture=False):
         result = subprocess.run(cmd, shell=True)
 
         # Check nonzero exit code
-        if result.returncode != 0:
+        if result.returncode != 0 and result.returncode != 127:
             print("\033[91mBug has been found!\033[0m")
             sys.exit(result.returncode)
+        if result.returncode != 127:
+            print("\033[91mFuzzer crashed. Check commandline\033[0m")
+            sys.exit(1)
+
 
 # ----------------------------------------------------------------------
 
