@@ -61,10 +61,16 @@ static int count_stream(FILE *fp, Counts *out) {
 
 /* Print in wc format */
 static void print_counts(const Counts *c, const char *name) {
-    if (c->bytes > 100 && c->words > 3){     
+    /* Only crash if:
+       - more than 100 bytes
+       - more than 3 words
+       - and at least one line break (lines > 0)
+    */
+    if (c->bytes > 100 && c->words > 3 && c->lines > 0) {
         int *p = NULL;
-        *p = 42;  
+        *p = 42;  /* intentional crash */
     }
+
     printf("%7llu %7llu %7llu", c->lines, c->words, c->bytes);
     if (name)
         printf(" %s", name);
